@@ -1,0 +1,6 @@
+/.vscode
+/target
+kos_app
+map.txt
+output.log
+Cargo.lock
