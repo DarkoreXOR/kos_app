@@ -8,14 +8,11 @@ fn initialize_console() -> Result<(), ()> {
 }
 
 pub fn kmain() {
-    /*
     initialize_console()
         .expect("cannot initialize console");
-    */
     
     debug_println!("loading dll...");
 
-    /*
     let lib_load_result =
         kstd::library::load("/sys/lib/console.obj");
 
@@ -42,7 +39,6 @@ pub fn kmain() {
     let s2 = format!("d{}", 987654321);
     debug_println!("{}", s2);
     debug_println!("ending...");
-    */
 
     let title = CString::new("hello, rust!");
 
@@ -60,6 +56,10 @@ pub fn kmain() {
                 kapi::window::set_redraw_state(kapi::window::RedrawState::Begin);
                 kapi::window::define_and_draw_window(title.as_str());
                 kapi::window::set_redraw_state(kapi::window::RedrawState::End);
+            }
+
+            kapi::window::WindowEvent::ButtonPressed => {
+                kapi::thread::exit_thread();
             }
 
             _ => {},

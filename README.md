@@ -10,3 +10,9 @@ To build this app you need these tools:
 - [kld](https://github.com/DarkoreXOR/kld)
 
 then run `cargo build`
+
+<br/>
+
+## App Screenshot
+
+![kos_app](https://user-images.githubusercontent.com/11241246/179320559-22f58c28-b928-4466-af05-a19eacbcbbc5.jpg)

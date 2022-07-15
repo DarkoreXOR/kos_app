@@ -11,6 +11,7 @@ pub enum WindowEvent {
     /// Contains event code.
     Unknown(u32),
     Redraw,
+    ButtonPressed,
 }
 
 pub fn set_redraw_state(redraw_state: RedrawState) {
@@ -57,7 +58,6 @@ pub fn define_and_draw_window(title: &str) {
     let esi = 0x00_000000;
     let edi = title.as_ptr() as u32;
 
-
     unsafe {
         syscall_abcdSD(0, ebx, ecx, edx, esi, edi);
     }
@@ -67,6 +67,7 @@ pub fn wait_event() -> WindowEvent {
     unsafe { 
         match syscall_a_a(10).0 {
             1 => WindowEvent::Redraw,
+            3 => WindowEvent::ButtonPressed,
             other_event_code => WindowEvent::Unknown(other_event_code),
         }
     }
